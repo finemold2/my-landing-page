@@ -4,45 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>앱 홍보 랜딩페이지</title>
+    <title>todo 앱 - 무료 할 일 관리</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <h1 class="main-title">할 일 관리, <span class="highlight">이제는 즐겁게!</span></h1>
-        <p class="main-sub">무료로, 쉽고, 재미있게!</p>
-        <p class="main-desc">지루한 할 일 관리는 이제 그만! <span class="badge">우리 앱</span>으로 매일을 특별하게 만들어보세요.</p>
+    <!-- 네비게이션 바 추가 -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <span class="nav-logo">todo 앱</span>
+            <div class="nav-links">
+                <a href="#features">주요 기능</a>
+                <a href="#download">다운로드</a>
+                <a href="#contact">문의</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="modern-header">
+        <div class="header-inner">
+            <h1 class="main-title">todo 앱</h1>
+            <p class="main-slogan">할 일 관리, <span class="highlight">이제는 즐겁게!</span></p>
+            <p class="main-desc">무료, 쉽고, 세련된 할 일 관리의 시작</p>
+        </div>
     </header>
-    <section class="app-image">
-        <img src="src/스크린샷 2025-05-19 002122.png" alt="앱 예시 이미지" class="app-preview">
-        <p style="font-size:1.2rem; color:#3570d4; margin-top:12px; font-weight:bold;">지금 바로 무료로 시작하세요!<br>가입, 결제, 광고 없이
-            100% 무료 앱</p>
+    <!-- 안내 카드형 영역 삭제 -->
+
+    <section class="hero">
+        <div class="hero-img-wrap">
+            <img src="src/스크린샷 2025-05-19 002122.png" alt="todo 앱 실제 스크린샷" class="hero-app-img">
+            <img src="src/111.png" alt="todo 앱 추가 스크린샷" class="hero-app-img">
+            <img src="src/unsplash_modern_office1.jpg" alt="모던 오피스" class="hero-bg-img">
+        </div>
+        <div class="hero-cta">
+            <a href="#download" class="download-btn big pulse">지금 무료로 시작하기</a>
+        </div>
     </section>
-    <section class="features">
+    <section class="features modern-features" id="features">
         <h2>주요 기능</h2>
         <div class="feature-list">
-            <div class="feature">
+            <div class="feature-card">
+                <img src="src/unsplash_modern_office1.jpg" alt="생산성 이미지" class="feature-img">
+                <h3>실제 할 일 관리</h3>
+                <p>실제 앱 스크린샷과 함께, 직관적인 UI로 누구나 쉽게!</p>
+            </div>
+            <div class="feature-card">
+                <svg width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" rx="12" fill="#eaf6ff" />
+                    <path d="M16 24h16M16 32h16M16 16h16" stroke="#4f8cff" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
                 <h3>간편한 사용</h3>
                 <p>누구나 쉽게 사용할 수 있는 직관적인 인터페이스</p>
             </div>
-            <div class="feature">
-                <h3>강력한 성능</h3>
-                <p>빠르고 안정적인 서비스 제공</p>
-            </div>
-            <div class="feature">
-                <h3>완전 무료!</h3>
+            <div class="feature-card">
+                <svg width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" rx="12" fill="#eaf6ff" />
+                    <path d="M24 16v16M16 24h16" stroke="#6edb8f" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+                <h3>완전 무료</h3>
                 <p>모든 기능을 제한 없이, 광고 없이 무료로 사용하세요.</p>
             </div>
         </div>
     </section>
-    <section id="download" class="download">
-        <h2>지금 바로 다운로드</h2>
-        <a href="#" class="download-btn pulse">구글플레이에서 받기</a>
+    <section id="download" class="download modern-download">
+        <h2>todo 앱을 지금 바로 경험해보세요</h2>
+        <a href="#" class="download-btn big pulse">구글플레이에서 받기</a>
     </section>
-    <footer>
-        <p>문의: contact@email.com</p>
-        <p>&copy; 2024 나의 멋진 앱. 모든 권리 보유.</p>
+    <footer class="modern-footer" id="contact">
+        <p>&copy; 21st c. todo 앱 문의 devfinemold@gmail.com</p>
     </footer>
     <script src="script.js"></script>
 </body>
