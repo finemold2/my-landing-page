@@ -321,6 +321,7 @@ body {
     font-weight: 900;
     color: #4f8cff;
     letter-spacing: -1px;
+    text-decoration: none;
 }
 
 .nav-links a {
