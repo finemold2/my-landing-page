@@ -55,7 +55,7 @@ body {
 }
 
 .hero {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -66,15 +66,24 @@ body {
 }
 
 .hero-img-wrap {
-    flex: 1 1 320px;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     min-height: 380px;
+    gap: 32px;
+}
+
+.hero-app-imgs {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 32px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-app-img {
@@ -87,6 +96,8 @@ body {
     position: relative;
     z-index: 2;
     background: #fff;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-bg-img {
@@ -413,4 +424,28 @@ body {
     .nav-links {
         margin-top: 8px;
     }
+}
+
+/* 홍보용 4컷만화 이미지 섹션 스타일 */
+.promo-comics {
+    text-align: center;
+    margin: 48px 0 32px 0;
+}
+
+.comics-img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.comics-img {
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background: #fff;
 }
