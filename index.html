@@ -80,6 +80,30 @@
         <h2>todo 앱을 지금 바로 경험해보세요</h2>
         <a href="#" class="download-btn big pulse">구글플레이에서 받기</a>
     </section>
+    <section id="feedback" class="feedback-section">
+        <h2>사용 후기 및 개선 제안</h2>
+        <form id="feedbackForm" class="feedback-form">
+            <div class="form-group">
+                <label for="feedbackType">유형</label>
+                <select id="feedbackType" name="feedbackType" required>
+                    <option value="">선택해주세요</option>
+                    <option value="review">사용 후기</option>
+                    <option value="suggestion">기능 개선 제안</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="feedbackContent">내용</label>
+                <textarea id="feedbackContent" name="feedbackContent" rows="4" required 
+                    placeholder="사용 후기나 개선하고 싶은 기능을 자유롭게 작성해주세요."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">이메일 (선택사항)</label>
+                <input type="email" id="userEmail" name="userEmail" 
+                    placeholder="답변을 받으실 이메일을 입력해주세요">
+            </div>
+            <button type="submit" class="submit-btn">제출하기</button>
+        </form>
+    </section>
     <footer class="modern-footer" id="contact">
         <p>&copy; 21st c. todo 앱 문의 devfinemold@gmail.com</p>
     </footer>
