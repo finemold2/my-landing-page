@@ -32,6 +32,7 @@ const translations = {
         'feedback-email-label': '이메일 (선택사항)',
         'feedback-email-placeholder': '답변을 받으실 이메일을 입력해주세요',
         'feedback-submit': '제출하기',
+        'download-alert': '앱 다운로드는 곧 제공될 예정입니다',
         'footer': '© 21st c. todo 앱 문의 devfinemold@gmail.com'
     },
     en: {
@@ -63,11 +64,12 @@ const translations = {
         'feedback-email-label': 'Email (Optional)',
         'feedback-email-placeholder': 'Enter your email to receive a response',
         'feedback-submit': 'Submit',
+        'download-alert': 'App download will be available soon',
         'footer': '© 21st c. todo app Contact devfinemold@gmail.com'
     }
 };
 
-document.getElementById('langToggle').addEventListener('click', function() {
+document.getElementById('langToggle').addEventListener('click', function () {
     currentLang = currentLang === 'ko' ? 'en' : 'ko';
     updateLanguage();
 });
@@ -114,28 +116,28 @@ function updateLanguage() {
 }
 
 // 페이지 로드 시 초기 언어 설정
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateLanguage();
 });
 
 document.querySelectorAll('.download-btn').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
-        alert('앱 다운로드는 곧 제공될 예정입니다');
+        alert(translations[currentLang]['download-alert']);
     });
 });
 
 // 피드백 폼 제출 처리
-document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+document.getElementById('feedbackForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     const feedbackType = document.getElementById('feedbackType').value;
     const feedbackContent = document.getElementById('feedbackContent').value;
     const userEmail = document.getElementById('userEmail').value;
-    
+
     // Google Apps Script 웹 앱 URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtHNdjQJDQMBcX9mU-PdnMz2U9vy3baRIcO7sxpJFUp0Rit7T-YcSM2CdGP_e3DMrlAg/exec';
-    
+
     try {
         const response = await fetch(scriptURL, {
             method: 'POST',
@@ -149,12 +151,12 @@ document.getElementById('feedbackForm').addEventListener('submit', async functio
                 'Content-Type': 'application/json'
             }
         });
-        
+
         // 제출 후 폼 초기화
         this.reset();
         // 사용자에게 제출 완료 메시지 표시
         alert('피드백이 성공적으로 제출되었습니다. 감사합니다!');
-        
+
     } catch (error) {
         console.error('Error:', error);
         alert('피드백 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
@@ -162,7 +164,7 @@ document.getElementById('feedbackForm').addEventListener('submit', async functio
 });
 
 // EmailJS 초기화
-(function() {
+(function () {
     emailjs.init("YOUR_PUBLIC_KEY"); // EmailJS에서 발급받은 Public Key를 입력하세요
 })();
 
@@ -171,12 +173,12 @@ async function sendEmailFeedback() {
     const feedbackType = document.getElementById('feedbackType').value;
     const feedbackContent = document.getElementById('feedbackContent').value;
     const userEmail = document.getElementById('userEmail').value;
-    
+
     if (!feedbackType || !feedbackContent) {
         alert('유형과 내용을 입력해주세요.');
         return;
     }
-    
+
     try {
         const templateParams = {
             to_email: 'devfinemold@gmail.com',
