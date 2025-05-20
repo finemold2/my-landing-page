@@ -336,15 +336,26 @@ body {
 }
 
 .nav-links a {
-    margin-left: 28px;
-    font-size: 1.05rem;
-    color: #3570d4;
+    color: #222;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
+    margin-right: 24px;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
+    color: #6edb8f;
+}
+
+.lang-toggle {
+    color: #4f8cff;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: color 0.2s;
+}
+
+.lang-toggle:hover {
     color: #6edb8f;
 }
 
@@ -514,8 +525,92 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 0 4px;
+        overflow-x: hidden;
+    }
+    .hero-img-wrap {
+        min-height: unset;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .hero-app-imgs {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+    }
+    .hero-app-img {
+        max-width: 100vw;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
     .feedback-form {
-        padding: 1.5rem;
-        margin: 1rem;
+        padding: 1rem;
+        margin: 0.5rem;
+        box-sizing: border-box;
+        min-width: 0;
+        max-width: 100vw;
+        width: 100%;
+    }
+    .form-group select,
+    .form-group textarea,
+    .form-group input {
+        font-size: 1.1rem;
+        padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .submit-btn {
+        font-size: 1.1rem;
+        padding: 1.1rem 0;
+        width: 100%;
+    }
+    .feature-card,
+    .info-card {
+        min-width: unset;
+        max-width: 100%;
+    }
+    .comics-img {
+        max-width: 100vw;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.email-btn {
+    background-color: #6edb8f;
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.email-btn:hover {
+    background-color: #5bc77d;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .email-btn {
+        width: 100%;
     }
 }
