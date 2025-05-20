@@ -1,6 +1,24 @@
 // 언어 전환 기능
 let currentLang = 'ko';
 
+// 부드러운 스크롤 기능 추가
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            e.preventDefault();
+            const nav = document.querySelector('.main-nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
+            const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: elementTop - navHeight - 10, // 10px 여유
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 // 번역 데이터
 const translations = {
     ko: {
@@ -72,6 +90,7 @@ const translations = {
 document.getElementById('langToggle').addEventListener('click', function () {
     currentLang = currentLang === 'ko' ? 'en' : 'ko';
     updateLanguage();
+    updateErrorLang();
 });
 
 function updateLanguage() {
@@ -113,6 +132,8 @@ function updateLanguage() {
             element.placeholder = translations[currentLang][key];
         }
     });
+
+    updateErrorLang();
 }
 
 // 페이지 로드 시 초기 언어 설정
@@ -120,28 +141,91 @@ document.addEventListener('DOMContentLoaded', function () {
     updateLanguage();
 });
 
+// 커스텀 알림 모달 함수 추가
+function showCustomAlert(msg) {
+    const alertDiv = document.getElementById('customAlert');
+    const msgSpan = document.getElementById('customAlertMsg');
+    const btn = document.getElementById('customAlertBtn');
+    msgSpan.textContent = msg;
+    alertDiv.style.display = 'flex';
+    btn.focus();
+    btn.onclick = function () {
+        alertDiv.style.display = 'none';
+    };
+}
+
 document.querySelectorAll('.download-btn').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
-        alert(translations[currentLang]['download-alert']);
+        showCustomAlert(translations[currentLang]['download-alert']);
+    });
+});
+
+// 피드백 폼 에러 메시지 다국어
+const feedbackErrors = {
+    ko: {
+        requiredType: '유형을 선택해주세요.',
+        requiredContent: '내용을 입력해주세요.',
+        requiredEmail: '이메일 형식이 올바르지 않습니다.'
+    },
+    en: {
+        requiredType: 'Please select a type.',
+        requiredContent: 'Please enter your feedback.',
+        requiredEmail: 'Invalid email format.'
+    }
+};
+
+function setError(field, msg) {
+    document.querySelector(`.input-error[data-error-for="${field}"]`).textContent = msg || '';
+}
+
+function clearAllErrors() {
+    document.querySelectorAll('.input-error').forEach(e => e.textContent = '');
+}
+
+// 입력값이 바뀔 때마다 에러 메시지 자동 제거
+['feedbackType', 'feedbackContent', 'userEmail'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function () {
+        setError(id, '');
     });
 });
 
 // 피드백 폼 제출 처리
-document.getElementById('feedbackForm').addEventListener('submit', async function (e) {
+const feedbackForm = document.getElementById('feedbackForm');
+feedbackForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-
+    clearAllErrors();
+    let hasError = false;
     const feedbackType = document.getElementById('feedbackType').value;
-    const feedbackContent = document.getElementById('feedbackContent').value;
-    const userEmail = document.getElementById('userEmail').value;
-
-    // Google Apps Script 웹 앱 URL
+    const feedbackContent = document.getElementById('feedbackContent').value.trim();
+    const userEmail = document.getElementById('userEmail').value.trim();
+    if (!feedbackType) {
+        setError('feedbackType', feedbackErrors[currentLang].requiredType);
+        hasError = true;
+    }
+    if (!feedbackContent) {
+        setError('feedbackContent', feedbackErrors[currentLang].requiredContent);
+        hasError = true;
+    }
+    if (userEmail && !/^\S+@\S+\.\S+$/.test(userEmail)) {
+        setError('userEmail', feedbackErrors[currentLang].requiredEmail);
+        hasError = true;
+    }
+    if (hasError) {
+        // 첫 번째 에러 필드로 포커스 이동
+        const first = document.querySelector('.input-error:not(:empty)');
+        if (first) {
+            const field = first.getAttribute('data-error-for');
+            document.getElementById(field).focus();
+        }
+        return;
+    }
+    // 정상 제출 로직 (기존 코드)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtHNdjQJDQMBcX9mU-PdnMz2U9vy3baRIcO7sxpJFUp0Rit7T-YcSM2CdGP_e3DMrlAg/exec';
-
     try {
         const response = await fetch(scriptURL, {
             method: 'POST',
-            mode: 'no-cors',  // CORS 이슈 해결을 위해 추가
+            mode: 'no-cors',
             body: JSON.stringify({
                 type: feedbackType,
                 content: feedbackContent,
@@ -151,15 +235,11 @@ document.getElementById('feedbackForm').addEventListener('submit', async functio
                 'Content-Type': 'application/json'
             }
         });
-
-        // 제출 후 폼 초기화
         this.reset();
-        // 사용자에게 제출 완료 메시지 표시
-        alert('피드백이 성공적으로 제출되었습니다. 감사합니다!');
-
+        showCustomAlert(currentLang === 'ko' ? '피드백이 성공적으로 제출되었습니다. 감사합니다!' : 'Feedback submitted successfully. Thank you!');
     } catch (error) {
         console.error('Error:', error);
-        alert('피드백 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+        showCustomAlert(currentLang === 'ko' ? '피드백 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' : 'An error occurred while submitting feedback. Please try again later.');
     }
 });
 
@@ -203,4 +283,16 @@ async function sendEmailFeedback() {
         console.error('Error:', error);
         alert('피드백 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
     }
-} 
+}
+
+// 언어 전환 시 에러 메시지도 같이 변경
+function updateErrorLang() {
+    // 제출 이후에만 에러 메시지 반영
+}
+
+// updateLanguage 함수 마지막에 updateErrorLang 호출 추가
+const _oldUpdateLanguage = updateLanguage;
+updateLanguage = function () {
+    _oldUpdateLanguage();
+    updateErrorLang();
+}; 
