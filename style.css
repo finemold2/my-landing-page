@@ -320,16 +320,16 @@ body {
     .nav-links {
         display: flex;
         flex-wrap: nowrap;
-        gap: 4px;
+        gap: 1px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 0 4px;
+        padding: 0 2px;
     }
 
     .nav-links a {
         font-size: 0.8rem;
-        padding: 3px 6px;
+        padding: 3px 4px;
         margin-right: 0;
         white-space: nowrap;
         min-width: fit-content;
@@ -337,8 +337,8 @@ body {
 
     .lang-toggle {
         font-size: 0.75rem;
-        padding: 3px 6px;
-        margin-left: 2px;
+        padding: 3px 4px;
+        margin-left: 1px;
         min-width: fit-content;
     }
 
@@ -351,12 +351,12 @@ body {
 @media (max-width: 480px) {
     .nav-links a {
         font-size: 0.75rem;
-        padding: 2px 4px;
+        padding: 2px 3px;
     }
 
     .lang-toggle {
         font-size: 0.7rem;
-        padding: 2px 4px;
+        padding: 2px 3px;
     }
 }
 
