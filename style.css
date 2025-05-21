@@ -320,16 +320,16 @@ body {
     .nav-links {
         display: flex;
         flex-wrap: nowrap;
-        gap: 8px;
+        gap: 12px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 0 4px;
+        padding: 0 8px;
     }
 
     .nav-links a {
-        font-size: 0.85rem;
-        padding: 4px 8px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
         margin-right: 0;
         white-space: nowrap;
         min-width: fit-content;
@@ -337,9 +337,9 @@ body {
     }
 
     .lang-toggle {
-        font-size: 0.85rem;
-        padding: 4px 8px;
-        margin-left: 8px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        margin-left: 12px;
         min-width: fit-content;
         text-align: center;
     }
@@ -352,42 +352,42 @@ body {
 
     /* 영어 버전일 때 메뉴 항목 너비 조정 */
     [lang="en"] .nav-links a {
-        font-size: 0.85rem;
-        padding: 4px 8px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
     }
 
     [lang="en"] .lang-toggle {
-        font-size: 0.85rem;
-        padding: 4px 8px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links {
-        gap: 6px;
-        padding: 0 2px;
+        gap: 8px;
+        padding: 0 4px;
     }
 
     .nav-links a {
-        font-size: 0.8rem;
-        padding: 3px 6px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
 
     .lang-toggle {
-        font-size: 0.8rem;
-        padding: 3px 6px;
-        margin-left: 6px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        margin-left: 8px;
     }
 
     /* 영어 버전일 때 더 작은 화면에서의 조정 */
     [lang="en"] .nav-links a {
-        font-size: 0.8rem;
-        padding: 3px 6px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
 
     [lang="en"] .lang-toggle {
-        font-size: 0.8rem;
-        padding: 3px 6px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
 }
 
