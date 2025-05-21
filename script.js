@@ -236,10 +236,10 @@ feedbackForm.addEventListener('submit', async function (e) {
             }
         });
         this.reset();
-        showCustomAlert(currentLang === 'ko' ? '피드백이 성공적으로 제출되었습니다. 감사합니다!' : 'Feedback submitted successfully. Thank you!');
+        showCustomAlert(currentLang === 'ko' ? '피드백이 성공적으로 제출되었습니다.\n감사합니다!' : 'Feedback submitted successfully.\nThank you!');
     } catch (error) {
         console.error('Error:', error);
-        showCustomAlert(currentLang === 'ko' ? '피드백 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' : 'An error occurred while submitting feedback. Please try again later.');
+        showCustomAlert(currentLang === 'ko' ? '피드백 제출 중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.' : 'An error occurred while submitting feedback.\nPlease try again later.');
     }
 });
 

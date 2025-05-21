@@ -282,7 +282,6 @@ body {
 }
 
 @media (max-width: 900px) {
-
     .hero,
     .feature-list {
         flex-direction: column;
@@ -310,6 +309,32 @@ body {
         flex-direction: column;
         gap: 24px;
         align-items: center;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        padding: 12px 16px;
+        gap: 8px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .lang-toggle {
+        order: -1;
+        margin: 0 auto;
+        font-size: 0.85rem;
+        padding: 4px 12px;
     }
 }
 
@@ -599,6 +624,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     position: relative;
+    white-space: pre-line;
 }
 
 #customAlertBtn {
