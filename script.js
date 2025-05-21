@@ -220,7 +220,16 @@ feedbackForm.addEventListener('submit', async function (e) {
         }
         return;
     }
-    // 정상 제출 로직 (기존 코드)
+
+    // 제출 버튼 비활성화 및 로딩 상태 표시
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = currentLang === 'ko' ? '제출 중...' : 'Submitting...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.cursor = 'not-allowed';
+
+    // 정상 제출 로직
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtHNdjQJDQMBcX9mU-PdnMz2U9vy3baRIcO7sxpJFUp0Rit7T-YcSM2CdGP_e3DMrlAg/exec';
     try {
         const response = await fetch(scriptURL, {
@@ -240,6 +249,12 @@ feedbackForm.addEventListener('submit', async function (e) {
     } catch (error) {
         console.error('Error:', error);
         showCustomAlert(currentLang === 'ko' ? '피드백 제출 중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.' : 'An error occurred while submitting feedback.\nPlease try again later.');
+    } finally {
+        // 제출 버튼 상태 복구
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
     }
 });
 
