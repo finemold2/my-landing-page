@@ -353,12 +353,12 @@ body {
     /* 영어 버전일 때 메뉴 항목 너비 조정 */
     [lang="en"] .nav-links a {
         font-size: 0.7rem;
-        padding: 2px 2px;
+        padding: 2px 1px;
     }
 
     [lang="en"] .lang-toggle {
         font-size: 0.7rem;
-        padding: 2px 2px;
+        padding: 2px 1px;
     }
 }
 
@@ -376,12 +376,12 @@ body {
     /* 영어 버전일 때 더 작은 화면에서의 조정 */
     [lang="en"] .nav-links a {
         font-size: 0.65rem;
-        padding: 1px 1px;
+        padding: 1px 0;
     }
 
     [lang="en"] .lang-toggle {
         font-size: 0.65rem;
-        padding: 1px 1px;
+        padding: 1px 0;
     }
 }
 
