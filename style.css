@@ -313,50 +313,50 @@ body {
 
     .nav-inner {
         flex-direction: column;
-        padding: 8px 12px;
-        gap: 4px;
+        padding: 6px 8px;
+        gap: 2px;
     }
 
     .nav-links {
         display: flex;
         flex-wrap: nowrap;
-        gap: 1px;
+        gap: 0;
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 0 2px;
+        padding: 0;
     }
 
     .nav-links a {
-        font-size: 0.8rem;
-        padding: 3px 4px;
+        font-size: 0.75rem;
+        padding: 2px 3px;
         margin-right: 0;
         white-space: nowrap;
         min-width: fit-content;
     }
 
     .lang-toggle {
-        font-size: 0.75rem;
-        padding: 3px 4px;
-        margin-left: 1px;
+        font-size: 0.7rem;
+        padding: 2px 3px;
+        margin-left: 0;
         min-width: fit-content;
     }
 
     .nav-logo {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
+        font-size: 1.1rem;
+        margin-bottom: 1px;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links a {
-        font-size: 0.75rem;
-        padding: 2px 3px;
+        font-size: 0.7rem;
+        padding: 1px 2px;
     }
 
     .lang-toggle {
-        font-size: 0.7rem;
-        padding: 2px 3px;
+        font-size: 0.65rem;
+        padding: 1px 2px;
     }
 }
 
