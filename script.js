@@ -89,6 +89,7 @@ const translations = {
 
 document.getElementById('langToggle').addEventListener('click', function () {
     currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    document.documentElement.lang = currentLang;
     updateLanguage();
     updateErrorLang();
 });
